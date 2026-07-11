@@ -44,3 +44,4 @@ To run this project locally on your machine, ensure you have Node.js installed, 
 
 5. Execute the Automated Test Suite:
    npm test
+   
