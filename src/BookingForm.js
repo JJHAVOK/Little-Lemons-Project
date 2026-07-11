@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 
-export default function BookingForm() {
-    // 1. Define separate local state variables for each form input field
+export default function BookingForm({ availableTimes, dispatch }) {
     const [date, setDate] = useState('');
     const [time, setTime] = useState('17:00');
     const [guests, setGuests] = useState(1);
     const [occasion, setOccasion] = useState('Birthday');
 
-    // 2. Local state array to hold mock available times as requested by Step 3
-    const [availableTimes] = useState([
-        '17:00', '18:00', '19:00', '20:00', '21:00', '22:00'
-    ]);
+    const handleDateChange = (e) => {
+        const selectedDate = e.target.value;
+        setDate(selectedDate);
+        // Dispatch the state change when the date form field is changed (Step 2 Tip)
+        dispatch({ type: 'UPDATE_TIMES', payload: selectedDate });
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -24,17 +25,15 @@ export default function BookingForm() {
             onSubmit={handleSubmit}
             aria-label="Table Reservation Form"
         >
-            {/* Date Picker Input */}
             <label htmlFor="res-date">Choose date</label>
             <input 
                 type="date" 
                 id="res-date" 
                 value={date} 
                 required
-                onChange={(e) => setDate(e.target.value)} 
+                onChange={handleDateChange} 
             />
 
-            {/* Time Picker Dropdown */}
             <label htmlFor="res-time">Choose time</label>
             <select 
                 id="res-time" 
@@ -46,7 +45,6 @@ export default function BookingForm() {
                 ))}
             </select>
 
-            {/* Guest Count Input */}
             <label htmlFor="guests">Number of guests</label>
             <input 
                 type="number" 
@@ -58,7 +56,6 @@ export default function BookingForm() {
                 onChange={(e) => setGuests(Number(e.target.value))}
             />
 
-            {/* Occasion Selection Dropdown */}
             <label htmlFor="occasion">Occasion</label>
             <select 
                 id="occasion" 
@@ -69,7 +66,6 @@ export default function BookingForm() {
                 <option value="Anniversary">Anniversary</option>
             </select>
 
-            {/* Submit CTA Button */}
             <input 
                 type="submit" 
                 value="Make Your Reservation" 
