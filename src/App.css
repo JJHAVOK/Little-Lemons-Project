@@ -7,6 +7,11 @@
   --secondary-pink: #FBDABB;
   --light-grey: #EDEFEE;
   --dark-grey: #333333;
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -15,157 +20,243 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Karla', sans-serif;
   color: var(--dark-grey);
-  background-color: #ffffff;
+  background-color: #fcfcfc;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Navigation Component Bar */
+/* Elite Toast Notifications Engine */
+.toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 9999;
+  animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.custom-toast {
+  background: #ffffff;
+  border-left: 5px solid var(--primary-yellow);
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  color: var(--primary-green);
+}
+
+@keyframes slideIn {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Premium Navbar Layout */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 10%;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 20px 10%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
 }
 
 .logo-placeholder {
   font-family: 'Markazi Text', serif;
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 38px;
+  font-weight: 700;
   color: var(--primary-green);
   text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.logo-placeholder:hover {
+  color: var(--primary-yellow);
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 20px;
+  gap: 32px;
 }
 
 .nav-links a {
   text-decoration: none;
   color: var(--primary-green);
-  font-weight: bold;
-  transition: color 0.2s;
+  font-weight: 700;
+  font-size: 16px;
+  position: relative;
+  transition: var(--transition-smooth);
 }
 
-.nav-links a:hover {
-  color: var(--primary-yellow);
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--primary-yellow);
+  transition: var(--transition-smooth);
 }
 
-/* Hero Section layout Component */
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Cinematic Hero Banner Component */
 .hero-banner {
   background-color: var(--primary-green);
   color: #ffffff;
-  padding: 40px 10%;
+  padding: 60px 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
+  overflow: hidden;
+  position: relative;
 }
 
 .hero-content h1 {
   font-family: 'Markazi Text', serif;
-  font-size: 56px;
+  font-size: 64px;
   color: var(--primary-yellow);
-  line-height: 1;
+  line-height: 0.9;
+  margin-bottom: 5px;
 }
 
 .hero-content h2 {
   font-family: 'Markazi Text', serif;
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 400;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  opacity: 0.9;
 }
 
 .hero-content p {
-  font-size: 16px;
-  max-width: 400px;
-  margin-bottom: 25px;
-  line-height: 1.4;
+  font-size: 18px;
+  max-width: 440px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  opacity: 0.85;
 }
 
 .hero-cta-btn {
   background-color: var(--primary-yellow);
   color: var(--dark-grey);
-  padding: 12px 24px;
+  padding: 14px 32px;
   border: none;
-  border-radius: 8px;
-  font-weight: bold;
+  border-radius: 12px;
+  font-weight: 700;
   font-size: 16px;
   cursor: pointer;
-  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 4px 14px rgba(244, 206, 20, 0.3);
+  transition: var(--transition-smooth);
 }
 
 .hero-cta-btn:hover {
-  transform: scale(1.03);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(244, 206, 20, 0.5);
   background-color: #e5be10;
 }
 
 .hero-image-placeholder {
-  width: 300px;
-  height: 300px;
-  background-color: #ccc;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  font-weight: bold;
-  background-image: linear-gradient(135deg, #7a948a 0%, #495E57 100%);
+  width: 360px;
+  height: 340px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-smooth);
 }
 
-/* Main Content and Specials Card System */
+.hero-image-placeholder:hover {
+  transform: scale(1.02) rotate(1deg);
+}
+
+/* Masterwork Booking Container Card Layout */
+.booking-container {
+  max-width: 550px;
+  margin: 80px auto;
+  padding: 50px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.booking-container h1 {
+  font-family: 'Markazi Text', serif;
+  font-size: 48px;
+  color: var(--primary-green);
+  margin-bottom: 8px;
+}
+
+.booking-container p {
+  margin-bottom: 35px;
+  color: #666;
+  font-size: 15px;
+}
+
+/* Dynamic Specials Dashboard Section */
 .specials-section {
-  padding: 60px 10%;
+  padding: 80px 10%;
+  background: #ffffff;
 }
 
 .specials-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .specials-header h3 {
-  font-size: 32px;
+  font-size: 40px;
   font-family: 'Markazi Text', serif;
+  color: var(--primary-green);
 }
 
 .specials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
 }
 
 .menu-card {
   background-color: var(--light-grey);
-  border-radius: 16px 16px 0 0;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
+  transition: var(--transition-smooth);
+}
+
+.menu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
 }
 
 .card-image-placeholder {
-  height: 180px;
-  background-color: #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #888;
-  font-weight: bold;
+  height: 220px;
+  width: 100%;
+  transition: var(--transition-smooth);
 }
 
 .card-body {
-  padding: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -176,7 +267,9 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--dark-grey);
 }
 
 .card-price {
@@ -185,60 +278,116 @@ body {
 
 .card-body p {
   font-size: 14px;
-  line-height: 1.5;
-  color: #555;
-  margin-bottom: 15px;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 20px;
 }
 
 .card-delivery-btn {
   background: none;
   border: none;
   color: var(--primary-green);
-  font-weight: bold;
+  font-weight: 700;
   text-align: left;
   cursor: pointer;
   margin-top: auto;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition-smooth);
 }
 
-/* Form Container UI View styling blocks */
-.booking-container {
-  max-width: 500px;
-  margin: 60px auto;
-  padding: 40px;
-  background-color: var(--light-grey);
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+.card-delivery-btn:hover {
+  color: var(--secondary-orange);
+  transform: translateX(4px);
 }
 
-.booking-container h1 {
+/* Premium Testimonials Section Layout */
+.testimonials-section {
+  background-color: var(--primary-green);
+  padding: 80px 10%;
+  text-align: center;
+  color: #ffffff;
+}
+
+.testimonials-section h3 {
   font-family: 'Markazi Text', serif;
   font-size: 42px;
-  color: var(--primary-green);
-  margin-bottom: 10px;
+  color: var(--primary-yellow);
+  margin-bottom: 40px;
 }
 
-.booking-container p {
-  margin-bottom: 30px;
-  color: #666;
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
 }
 
-/* Footer Section layout */
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.1);
+  text-align: left;
+  transition: var(--transition-smooth);
+}
+
+.testimonial-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+}
+
+.stars {
+  color: var(--primary-yellow);
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary-yellow);
+}
+
+.user-info h5 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.testimonial-card p {
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+/* Structured Structural Footer styling */
 .footer-container {
-  background-color: var(--primary-green);
+  background-color: #2c3a35;
   color: #ffffff;
-  padding: 40px 10%;
-  margin-top: 60px;
+  padding: 60px 10%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 30px;
+  gap: 40px;
 }
 
 .footer-column h4 {
   color: var(--primary-yellow);
   font-family: 'Markazi Text', serif;
-  font-size: 24px;
-  margin-bottom: 15px;
+  font-size: 26px;
+  margin-bottom: 20px;
 }
 
 .footer-column ul {
@@ -246,31 +395,24 @@ body {
 }
 
 .footer-column ul li {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .footer-column ul li a {
-  color: #ffffff;
+  color: rgba(255,255,255,0.8);
   text-decoration: none;
-  font-size: 14px;
+  font-size: 15px;
+  transition: var(--transition-smooth);
 }
 
 .footer-column ul li a:hover {
   color: var(--primary-yellow);
+  padding-left: 4px;
 }
 
-/* Responsive adjustment settings overlay */
 @media (max-width: 768px) {
-  .hero-banner {
-    flex-direction: column;
-    text-align: center;
-  }
-  .hero-content p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .navbar {
-    flex-direction: column;
-    gap: 15px;
-  }
+  .hero-banner { flex-direction: column; text-align: center; padding: 40px 5%; }
+  .hero-content p { margin-left: auto; margin-right: auto; }
+  .navbar { flex-direction: column; gap: 20px; padding: 20px 5%; }
+  .booking-container { padding: 30px 20px; margin: 40px 20px; }
 }
