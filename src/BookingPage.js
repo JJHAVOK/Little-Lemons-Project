@@ -11,7 +11,7 @@ export default function BookingPage({ availableTimes, dispatch, submitForm }) {
                 <BookingForm availableTimes={availableTimes} dispatch={dispatch} submitForm={submitForm} />
             </div>
 
-            {/* The Figma Specials Grid to eliminate empty blank canvas layouts */}
+            {/* The Figma Specials Grid */}
             <section className="specials-section" id="menu">
                 <div className="specials-header">
                     <h3>This Weeks Specials!</h3>
@@ -19,7 +19,12 @@ export default function BookingPage({ availableTimes, dispatch, submitForm }) {
                 </div>
                 <div className="specials-grid">
                     <article className="menu-card">
-                        <div className="card-image-placeholder">Greek Salad Image</div>
+                        <img 
+                            src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=300&q=80" 
+                            alt="Fresh Greek Salad" 
+                            className="card-image-placeholder"
+                            style={{ objectFit: 'cover' }}
+                        />
                         <div className="card-body">
                             <div className="card-title-row">
                                 <span>Greek Salad</span>
@@ -31,10 +36,15 @@ export default function BookingPage({ availableTimes, dispatch, submitForm }) {
                     </article>
 
                     <article className="menu-card">
-                        <div className="card-image-placeholder">Bruchetta Image</div>
+                        <img 
+                            src="https://images.unsplash.com/photo-1572656631137-7935297eff55?auto=format&fit=crop&w=300&q=80" 
+                            alt="Traditional Italian Tomato Bruschetta" 
+                            className="card-image-placeholder"
+                            style={{ objectFit: 'cover' }}
+                        />
                         <div className="card-body">
                             <div className="card-title-row">
-                                <span>Bruchetta</span>
+                                <span>Bruschetta</span>
                                 <span className="card-price">$5.99</span>
                             </div>
                             <p>Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil.</p>
@@ -43,7 +53,12 @@ export default function BookingPage({ availableTimes, dispatch, submitForm }) {
                     </article>
 
                     <article className="menu-card">
-                        <div className="card-image-placeholder">Lemon Dessert Image</div>
+                        <img 
+                            src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=300&q=80" 
+                            alt="Creamy gourmet lemon dessert" 
+                            className="card-image-placeholder"
+                            style={{ objectFit: 'cover' }}
+                        />
                         <div className="card-body">
                             <div className="card-title-row">
                                 <span>Lemon Dessert</span>
