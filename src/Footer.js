@@ -1,3 +1,29 @@
+import React from 'react';
+
 export default function Footer() {
-    return <footer><h2>Footer Links</h2></footer>;
+    return (
+        <footer className="footer-container" aria-label="Site Footer Information">
+            <div className="footer-column">
+                <h4>Little Lemon</h4>
+                <p style={{ fontSize: '14px', maxWidth: '200px', opacity: 0.8 }}>Traditional recipes served with a modern twist.</p>
+            </div>
+            <div className="footer-column">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="/booking">Reservations</a></li>
+                </ul>
+            </div>
+            <div className="footer-column">
+                <h4>Contact Us</h4>
+                <ul style={{ fontSize: '14px', opacity: 0.8 }}>
+                    <li>123 Lemon Way, Chicago</li>
+                    <li>(312) 555-0199</li>
+                    <li>info@littlelemon.com</li>
+                </ul>
+            </div>
+        </footer>
+    );
 }
