@@ -1,3 +1,10 @@
+import React from 'react';
+import BookingPage from './BookingPage';
+
 export default function Main() {
-    return <main><h2>Main Content Area</h2></main>;
+    return (
+        <main>
+            <BookingPage />
+        </main>
+    );
 }
